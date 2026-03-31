@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>協力医のタスケル｜株式会社〇〇</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0d1f3c;
+  --navy-mid: #1a3258;
+  --blue: #1e4d8c;
+  --blue-light: #2d6abf;
+  --accent: #c8a96e;
+  --accent-light: #e8d5a8;
+  --white: #ffffff;
+  --off-white: #f7f5f0;
+  --gray-light: #eeece8;
+  --gray: #8a8a8a;
+  --text: #1a1a1a;
+  --text-mid: #444;
+  --border: #d8d4cc;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+
+.header-top {
+  background: var(--navy);
+  padding: 6px 0;
+  text-align: right;
+}
+.header-top-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+}
+.header-top a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.header-top a:hover { color: var(--accent-light); }
+
+.header-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 72px;
+}
+.logo-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-decoration: none;
+  margin-right: auto;
+}
+.logo-main {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.logo-sub {
+  font-size: 10px;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+}
+
+nav { display: flex; align-items: center; gap: 0; }
+nav a {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-mid);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+nav a:hover { color: var(--blue); border-color: var(--blue); }
+
+.header-cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 24px;
+}
+.btn-tel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--navy);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+.btn-tel svg { width: 14px; height: 14px; }
+
+.btn-outline {
+  padding: 8px 18px;
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  font-size: 12px;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 400;
+}
+.btn-outline:hover { background: var(--navy); color: var(--white); }
+
+.btn-fill {
+  padding: 8px 18px;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 12px;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: background 0.2s;
+  font-weight: 400;
+}
+.btn-fill:hover { background: var(--navy); }
+
+/* ===== MV ===== */
+.mv {
+  margin-top: 104px;
+  background: var(--navy);
+  min-height: calc(100vh - 104px);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mv::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 100% 50%, rgba(30,77,140,0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(200,169,110,0.08) 0%, transparent 50%);
+}
+
+.mv-grid-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.mv-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 32px;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.mv-text {}
+.mv-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  border: 1px solid rgba(200,169,110,0.4);
+  padding: 5px 14px;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+.mv-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  margin-bottom: 28px;
+}
+.mv-title em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 400;
+}
+.mv-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  line-height: 2;
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+.mv-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.mv-btn-primary {
+  padding: 14px 36px;
+  background: var(--accent);
+  color: var(--navy);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  transition: background 0.2s, transform 0.2s;
+}
+.mv-btn-primary:hover { background: #d4b87a; transform: translateY(-1px); }
+.mv-btn-secondary {
+  padding: 14px 36px;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  transition: border-color 0.2s, color 0.2s;
+}
+.mv-btn-secondary:hover { border-color: rgba(255,255,255,0.7); color: var(--white); }
+
+.mv-notice {
+  margin-top: 36px;
+  padding: 14px 20px;
+  border-left: 2px solid var(--accent);
+  background: rgba(200,169,110,0.07);
+}
+.mv-notice-label {
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  margin-bottom: 4px;
+}
+.mv-notice-text {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+
+.mv-visual {
+  position: relative;
+}
+.mv-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.mv-stat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 28px 24px;
+  text-align: center;
+  transition: background 0.2s;
+}
+.mv-stat:hover { background: rgba(255,255,255,0.07); }
+.mv-stat:hover { background: rgba(255,255,255,0.07); }
+.mv-stat-icon {
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.mv-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.mv-stat-num span { font-size: 18px; }
+.mv-stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+.mv-stat-sub {
+  font-size: 10px;
+  color: rgba(200,169,110,0.7);
+  margin-top: 4px;
+}
+
+/* ===== SECTIONS COMMON ===== */
+.section { padding: 96px 0; }
+.section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+.section-header { margin-bottom: 56px; }
+.section-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.section-ja {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--navy);
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: 16px;
+}
+.section-lead {
+  font-size: 14px;
+  color: var(--gray);
+  max-width: 560px;
+  line-height: 2;
+}
+.section-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  margin: 16px 0 0;
+}
+
+/* ===== SERVICE ===== */
+.service { background: var(--off-white); }
+
+.service-flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 56px;
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+.service-flow-item {
+  flex: 1;
+  padding: 20px 24px;
+  text-align: center;
+  position: relative;
+}
+.service-flow-item::after {
+  content: '→';
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-size: 16px;
+  z-index: 1;
+}
+.service-flow-item:last-child::after { display: none; }
+.flow-step {
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  margin-bottom: 6px;
+}
+.flow-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 0.05em;
+}
+.flow-sub {
+  font-size: 11px;
+  color: var(--gray);
+  margin-top: 2px;
+}
+
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 40px;
+}
+.service-card {
+  background: var(--white);
+  padding: 40px 32px;
+  border: 1px solid var(--border);
+  position: relative;
+  transition: box-shadow 0.3s, transform 0.3s;
+  cursor: default;
+}
+.service-card:hover {
+  box-shadow: 0 8px 40px rgba(13,31,60,0.12);
+  transform: translateY(-4px);
+}
+.service-card-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--gray-light);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.service-card-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 3px 10px;
+  margin-bottom: 14px;
+}
+.service-card-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+.service-card-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.9;
+}
+.service-card-price {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gray-light);
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.price-label { font-size: 10px; color: var(--gray); letter-spacing: 0.08em; }
+.price-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--blue);
+}
+.price-unit { font-size: 11px; color: var(--gray); }
+
+.service-more {
+  text-align: right;
+}
+.view-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--navy);
+  padding-bottom: 2px;
+  transition: gap 0.2s, color 0.2s;
+}
+.view-more:hover { gap: 16px; color: var(--blue); border-color: var(--blue); }
+
+/* ===== REASON ===== */
+.reason { background: var(--white); }
+
+.reason-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+.reason-item {
+  display: flex;
+  gap: 24px;
+  padding: 36px 40px;
+  border: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.reason-item:hover { background: var(--off-white); }
+.reason-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--gray-light);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 56px;
+}
+.reason-content {}
+.reason-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+.reason-title em {
+  font-style: normal;
+  color: var(--blue);
+}
+.reason-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.9;
+}
+
+/* ===== CASE ===== */
+.case { background: var(--navy); }
+.case .section-en { color: rgba(200,169,110,0.8); }
+.case .section-ja { color: var(--white); }
+.case .section-lead { color: rgba(255,255,255,0.5); }
+.case .section-divider { background: rgba(200,169,110,0.5); }
+
+.case-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-bottom: 56px;
+}
+.case-stat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 32px 24px;
+  text-align: center;
+}
+.case-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.case-stat-num sup { font-size: 18px; }
+.case-stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+.case-cats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 40px;
+}
+.case-cat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 32px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.case-cat:hover { background: rgba(255,255,255,0.08); }
+.case-cat-icon {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(200,169,110,0.4);
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.case-cat-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  color: var(--white);
+  letter-spacing: 0.05em;
+}
+.case-cat-sub {
+  font-size: 11px;
+  color: rgba(200,169,110,0.7);
+  margin-top: 6px;
+}
+
+.case .view-more { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.4); }
+.case .view-more:hover { color: var(--accent-light); border-color: var(--accent); }
+.case .service-more { text-align: right; }
+
+/* ===== VOICE ===== */
+.voice { background: var(--off-white); }
+
+.voice-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-bottom: 40px;
+}
+.voice-card {
+  background: var(--white);
+  padding: 36px 36px 32px;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.voice-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--gray-light);
+  line-height: 0.8;
+  margin-bottom: 8px;
+}
+.voice-text {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 2;
+  margin-bottom: 20px;
+}
+.voice-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gray-light);
+}
+.voice-avatar {
+  width: 44px;
+  height: 44px;
+  background: var(--navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.voice-author-info {}
+.voice-firm { font-size: 11px; color: var(--gray); margin-bottom: 2px; }
+.voice-name { font-size: 13px; font-weight: 500; color: var(--navy); }
+.voice-bar { font-size: 10px; color: var(--accent); margin-top: 2px; letter-spacing: 0.05em; }
+
+/* ===== INTERVIEW ===== */
+.interview { background: var(--white); }
+
+.interview-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  max-width: 760px;
+  margin-bottom: 40px;
+  transition: box-shadow 0.3s;
+}
+.interview-card:hover { box-shadow: 0 8px 40px rgba(13,31,60,0.1); }
+.interview-img {
+  background: var(--navy-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+.interview-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(30,77,140,0.3) 0%, transparent 60%);
+}
+.interview-img-placeholder {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+  z-index: 1;
+}
+.interview-content { padding: 32px 36px; }
+.interview-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 3px 10px;
+}
+.interview-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.interview-firm { font-size: 12px; color: var(--gray); margin-bottom: 12px; }
+.interview-bar { font-size: 11px; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 16px; }
+.interview-services {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.service-badge {
+  font-size: 10px;
+  background: var(--off-white);
+  color: var(--text-mid);
+  padding: 4px 10px;
+  letter-spacing: 0.05em;
+}
+
+/* ===== NEWS ===== */
+.news { background: var(--off-white); }
+.news .section-header { margin-bottom: 40px; }
+
+.news-list { border-top: 1px solid var(--border); margin-bottom: 40px; }
+.news-item {
+  display: grid;
+  grid-template-columns: 100px 80px 1fr auto;
+  gap: 0;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s;
+}
+.news-item:hover .news-title { color: var(--blue); }
+.news-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: var(--gray);
+  letter-spacing: 0.05em;
+}
+.news-cat {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  border: 1px solid currentColor;
+  padding: 2px 8px;
+  display: inline-block;
+}
+.news-title {
+  font-size: 13px;
+  color: var(--text-mid);
+  padding-left: 24px;
+  transition: color 0.2s;
+}
+.news-arrow {
+  font-size: 12px;
+  color: var(--gray);
+  transition: transform 0.2s;
+}
+.news-item:hover .news-arrow { transform: translateX(4px); }
+
+/* ===== CONTACT ===== */
+.contact { background: var(--navy); padding: 96px 0 80px; }
+.contact .section-en { color: rgba(200,169,110,0.8); }
+.contact .section-ja { color: var(--white); }
+.contact .section-lead { color: rgba(255,255,255,0.5); }
+.contact .section-divider { background: rgba(200,169,110,0.5); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 48px;
+}
+.contact-block {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 48px 44px;
+}
+.contact-block-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: 0.06em;
+}
+.contact-block-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 28px;
+  line-height: 1.8;
+}
+.contact-btn {
+  display: block;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: var(--navy);
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  transition: background 0.2s;
+}
+.contact-btn:hover { background: #d4b87a; }
+.contact-btn-outline {
+  display: block;
+  padding: 14px 28px;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  transition: border-color 0.2s, color 0.2s;
+}
+.contact-btn-outline:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
+
+.contact-tel-wrap { margin-top: 20px; }
+.contact-tel-label { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; margin-bottom: 6px; }
+.contact-tel {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: 0.08em;
+}
+.contact-tel-hours { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+.contact-note {
+  margin-top: 24px;
+  padding: 12px 16px;
+  border-left: 2px solid rgba(200,169,110,0.4);
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #080f1e;
+  color: rgba(255,255,255,0.4);
+}
+.footer-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 32px 32px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-logo {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.footer-logo-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+.footer-company { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.7; }
+
+.footer-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.footer-nav-group {}
+.footer-nav-title {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-nav-links { display: flex; flex-direction: column; gap: 8px; }
+.footer-nav-links a {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav-links a:hover { color: rgba(255,255,255,0.7); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.06em; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 11px; color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.5); }
+
+/* ===== SCROLL ANIMATION ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="header-top">
+    <div class="header-top-inner">
+      <a href="#">会社概要</a>
+      <a href="#">プライバシーポリシー</a>
+    </div>
+  </div>
+  <div class="header-main">
+    <a href="#" class="logo-wrap">
+      <span class="logo-main">協力医のタスケル</span>
+      <span class="logo-sub">株式会社〇〇</span>
+    </a>
+    <nav>
+      <a href="#">協力医とは</a>
+      <a href="#">活動内容</a>
+      <a href="#">よくあるご質問</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#" class="btn-outline">資料DL</a>
+      <a href="#" class="btn-fill">無料でお問い合わせ</a>
+    </div>
+  </div>
+</header>
+
+<!-- MV -->
+<section class="mv">
+  <div class="mv-grid-lines"></div>
+  <div class="mv-inner">
+    <div class="mv-text">
+      <span class="mv-eyebrow">弁護士と医師をつなぐ、実務に強いサービス</span>
+      <h1 class="mv-title">
+        弁護士と医師をつなぎ<br>
+        <em>専門性の高い</em><br>
+        医療訴訟をサポート
+      </h1>
+      <p class="mv-desc">
+        法と医を理解するエキスパートが、弁護士と専門医の橋渡しを担います。オンライン・メッセージ・電話でのアドバイス・期日への付き添い・主張の医学的助言を通じて、裁判の開始から判決まで継続してサポートします。
+      </p>
+      <div class="mv-cta">
+        <a href="#" class="mv-btn-primary">無料でお問い合わせ</a>
+        <a href="#" class="mv-btn-secondary">サービスを見る</a>
+      </div>
+      <div class="mv-notice">
+        <div class="mv-notice-label">INFORMATION</div>
+        <div class="mv-notice-text">2025.4.1　協力医のタスケル、ホームページを公開しました。</div>
+      </div>
+    </div>
+    <div class="mv-visual">
+      <div class="mv-stats-grid">
+        <div class="mv-stat">
+          <div class="mv-stat-icon">WINDOW</div>
+          <div class="mv-stat-num" style="font-size:26px;line-height:1.4;margin-bottom:10px;">弁護士が<br>窓口対応</div>
+          <div class="mv-stat-label">法律の専門家が直接担当</div>
+          <div class="mv-stat-sub">安心・丁寧なサポート</div>
+        </div>
+        <div class="mv-stat">
+          <div class="mv-stat-icon">COVERAGE</div>
+          <div class="mv-stat-num" style="font-size:26px;line-height:1.4;margin-bottom:10px;">全国<br>対応</div>
+          <div class="mv-stat-label">対応エリア</div>
+          <div class="mv-stat-sub">メール・電話・オンライン</div>
+        </div>
+        <div class="mv-stat">
+          <div class="mv-stat-icon">DOCTOR</div>
+          <div class="mv-stat-num" style="font-size:26px;line-height:1.4;margin-bottom:10px;">専門医が<br>医療助言</div>
+          <div class="mv-stat-label">各分野の専門医が対応</div>
+          <div class="mv-stat-sub">豊富な医療知識でサポート</div>
+        </div>
+        <div class="mv-stat">
+          <div class="mv-stat-icon">CERTIFIED</div>
+          <div class="mv-stat-num" style="font-size:26px;line-height:1.4;margin-bottom:10px;">判決まで<br>継続支援</div>
+          <div class="mv-stat-label">裁判開始前から終了まで</div>
+          <div class="mv-stat-sub">一貫したサポート体制</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE -->
+<section class="section service" id="service">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-en">Service</span>
+      <span class="section-ja">サービス</span>
+      <p class="section-lead">協力医のタスケルが提供する2つのサービスをご紹介します。</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- ① 協力医サービス -->
+    <div style="margin-bottom:56px;">
+      <div class="fade-in" style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
+        <div style="width:4px;height:40px;background:var(--accent);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:4px;">SERVICE 01</div>
+          <h3 style="font-family:'Noto Serif JP',serif;font-size:22px;font-weight:400;color:var(--navy);letter-spacing:0.06em;">協力医サービス</h3>
+        </div>
+      </div>
+
+      <!-- 協力医サービス 3つの特徴 -->
+      <div class="fade-in" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:28px;">
+
+        <!-- 特徴①：アドバイス -->
+        <div style="background:var(--white);border:1px solid var(--border);padding:36px 32px;position:relative;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.12)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+          <!-- 背景装飾数字 -->
+          <div style="position:absolute;top:-10px;right:16px;font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:var(--gray-light);line-height:1;pointer-events:none;user-select:none;">01</div>
+          <!-- アイコン -->
+          <div style="width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">ADVICE</div>
+          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">多様な手段での<br>医学的アドバイス</h4>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;">オンライン・メッセージ・電話など様々な手段で医学的見地から弁護士の疑問に答え、事案の論点整理や戦略立案を継続的にサポートします。</p>
+        </div>
+
+        <!-- 特徴②：付き添い -->
+        <div style="background:var(--white);border:1px solid var(--border);padding:36px 32px;position:relative;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.12)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+          <div style="position:absolute;top:-10px;right:16px;font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:var(--gray-light);line-height:1;pointer-events:none;user-select:none;">02</div>
+          <div style="width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">ATTENDANCE</div>
+          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">裁判期日への<br>専門医として付き添い</h4>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;">裁判期日に専門医として同席し、医学的な質問や証言に対してリアルタイムでサポートします。</p>
+        </div>
+
+        <!-- 特徴③：主張の助言 -->
+        <div style="background:var(--white);border:1px solid var(--border);padding:36px 32px;position:relative;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.12)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+          <div style="position:absolute;top:-10px;right:16px;font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:var(--gray-light);line-height:1;pointer-events:none;user-select:none;">03</div>
+          <div style="width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">ASSERTION</div>
+          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">弁護士の主張への<br>医学的助言・補強</h4>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;">弁護士の主張に対し医学的根拠を補強。裁判終了まで継続して専門家として伴走します。</p>
+        </div>
+
+      </div>
+
+      <!-- 協力医サービス フロー -->
+      <div class="fade-in" style="margin-bottom:16px;font-size:11px;font-weight:500;color:var(--gray);letter-spacing:0.1em;">― ご利用の流れ</div>
+      <div class="service-flow fade-in">
+        <div class="service-flow-item">
+          <div class="flow-step">STEP 01</div>
+          <div class="flow-title">ご相談・マッチング</div>
+          <div class="flow-sub">事案内容のヒアリング<br>専門医の選定</div>
+        </div>
+        <div class="service-flow-item">
+          <div class="flow-step">STEP 02</div>
+          <div class="flow-title">契約・着手</div>
+          <div class="flow-sub">協力内容・期間の<br>合意・契約締結</div>
+        </div>
+        <div class="service-flow-item">
+          <div class="flow-step">STEP 03</div>
+          <div class="flow-title">アドバイス・付き添い</div>
+          <div class="flow-sub">期日への同席<br>医学的見解の提供</div>
+        </div>
+        <div class="service-flow-item">
+          <div class="flow-step">STEP 04</div>
+          <div class="flow-title">主張の助言・裁判終了</div>
+          <div class="flow-sub">継続サポートで<br>判決まで伴走</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② 医療鑑定意見書作成サービス -->
+    <div>
+      <div class="fade-in" style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
+        <div style="width:4px;height:40px;background:var(--blue);flex-shrink:0;"></div>
+        <div>
+          <div style="font-size:11px;letter-spacing:0.2em;color:var(--blue);margin-bottom:4px;">SERVICE 02</div>
+          <h3 style="font-family:'Noto Serif JP',serif;font-size:22px;font-weight:400;color:var(--navy);letter-spacing:0.06em;">医療鑑定意見書作成サービス</h3>
+        </div>
+      </div>
+
+      <!-- 特徴2点 -->
+      <div class="fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:36px;">
+
+        <!-- POINT 01 -->
+        <div style="background:var(--white);border:1px solid var(--border);padding:36px 32px;position:relative;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.12)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+          <div style="position:absolute;top:-10px;right:16px;font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:var(--gray-light);line-height:1;pointer-events:none;user-select:none;">01</div>
+          <div style="width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">POINT 01</div>
+          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">希望に沿わない意見書は<br>作成させない</h4>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;">弁護士の意図と乖離した内容にならないよう、鑑定事項の設定から専門医への情報共有まで、一貫して弁護士の立場に寄り添いながら進めます。</p>
+        </div>
+
+        <!-- POINT 02 -->
+        <div style="background:var(--white);border:1px solid var(--border);padding:36px 32px;position:relative;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.12)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+          <div style="position:absolute;top:-10px;right:16px;font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:var(--gray-light);line-height:1;pointer-events:none;user-select:none;">02</div>
+          <div style="width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">POINT 02</div>
+          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">弁護士が監修し<br>裁判で使える意見書を作成</h4>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;">弁護士が法的構成を監修した上で専門医が意見書を作成。裁判所が求める形式・内容を満たした、実務で即戦力となる鑑定意見書を提供します。</p>
+        </div>
+
+      </div>
+
+      <!-- 鑑定書フロー -->
+      <div class="fade-in" style="margin-bottom:16px;font-size:11px;font-weight:500;color:var(--gray);letter-spacing:0.1em;">― ご利用の流れ</div>
+      <div class="service-flow fade-in" style="margin-bottom:28px;">
+        <div class="service-flow-item">
+          <div class="flow-step">STEP 01</div>
+          <div class="flow-title">簡易スクリーニング</div>
+          <div class="flow-sub">初期判断・方針決定</div>
+        </div>
+        <div class="service-flow-item">
+          <div class="flow-step">STEP 02</div>
+          <div class="flow-title">鑑定レポート作成</div>
+          <div class="flow-sub">訴訟外・示談・異議申立</div>
+        </div>
+        <div class="service-flow-item">
+          <div class="flow-step">STEP 03</div>
+          <div class="flow-title">鑑定意見書作成</div>
+          <div class="flow-sub">訴訟用・証拠提出</div>
+        </div>
+      </div>
+
+      <!-- 鑑定書 サービスカード -->
+      <div class="service-cards">
+        <div class="service-card fade-in">
+          <div class="service-card-num">01</div>
+          <div class="service-card-tag">初期診断</div>
+          <h3 class="service-card-title">簡易スクリーニング</h3>
+          <p class="service-card-desc">弁護士が抱える事案に対して、医師による簡易的な見解を提供。訴訟対応の必要性や、今後どのような鑑定が適切かを検討する判断材料としてご活用いただけます。</p>
+        </div>
+        <div class="service-card fade-in fade-in-delay-1">
+          <div class="service-card-num">02</div>
+          <div class="service-card-tag">訴訟外</div>
+          <h3 class="service-card-title">鑑定レポート作成</h3>
+          <p class="service-card-desc">訴訟外での交渉や異議申し立て、示談交渉において提出する鑑定レポートを作成します。目的に応じて柔軟に対応し、法的主張の補強や適切な解決に貢献します。</p>
+        </div>
+        <div class="service-card fade-in fade-in-delay-2">
+          <div class="service-card-num">03</div>
+          <div class="service-card-tag">訴訟用</div>
+          <h3 class="service-card-title">鑑定意見書作成</h3>
+          <p class="service-card-desc">訴訟に発展した場合には、裁判所に提出する正式な鑑定意見書を作成。専門医が医学的見地から争点を整理し、実務に役立つ精度の高い書面で立証を支援します。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-more fade-in" style="margin-top:40px;">
+      <a href="#" class="view-more">View More →</a>
+    </div>
+  </div>
+</section>
+
+<!-- REASON -->
+<section class="section reason" id="reason">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-en">Reason</span>
+      <span class="section-ja">選ばれる理由</span>
+      <p class="section-lead">協力医のタスケルが多くの弁護士に選ばれる理由を、4つの視点からご紹介します。</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="reason-grid">
+      <div class="reason-item fade-in">
+        <div class="reason-num">01</div>
+        <div class="reason-content">
+          <h3 class="reason-title">弁護士が立ち上げた<br><em>実務に根ざしたサービス</em></h3>
+          <p class="reason-desc">協力医のタスケルは、弁護士が自ら立ち上げたサービスです。法廷の実務をよく知る弁護士が窓口となり、医師と弁護士の間に生じるコミュニケーションのギャップを埋め、実践的なサポートを提供します。</p>
+        </div>
+      </div>
+      <div class="reason-item fade-in fade-in-delay-1">
+        <div class="reason-num">02</div>
+        <div class="reason-content">
+          <h3 class="reason-title">各分野の専門医が<br><em>直接アドバイス</em></h3>
+          <p class="reason-desc">整形外科・脳神経外科・精神科など、案件に応じた各分野の専門医が対応。オンライン・メッセージ・電話など多様な手段で、医学的見地から弁護士の疑問に迅速に答えます。</p>
+        </div>
+      </div>
+      <div class="reason-item fade-in fade-in-delay-2">
+        <div class="reason-num">03</div>
+        <div class="reason-content">
+          <h3 class="reason-title">裁判開始前から<br><em>判決まで継続サポート</em></h3>
+          <p class="reason-desc">一般的な鑑定書作成にとどまらず、裁判が始まる前の準備段階から期日への付き添い・主張の医学的助言まで、一貫して専門医が伴走します。途中で担当が変わることなく、最後まで同じ専門医が対応します。</p>
+        </div>
+      </div>
+      <div class="reason-item fade-in fade-in-delay-3">
+        <div class="reason-num">04</div>
+        <div class="reason-content">
+          <h3 class="reason-title">希望に沿った<br><em>裁判で使える意見書</em></h3>
+          <p class="reason-desc">弁護士が法的構成を監修した上で専門医が意見書を作成。弁護士の意図と乖離しないよう鑑定事項を丁寧に設定し、裁判所が求める形式・内容を満たした実務で即戦力となる鑑定意見書を提供します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE -->
+<section class="section case" id="case">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-en">Coverage</span>
+      <span class="section-ja">対応できる案件</span>
+      <p class="section-lead">医療訴訟に関わる幅広い案件に対応しています。まずはお気軽にご相談ください。</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- 対応領域 3カード -->
+    <div class="case-cats">
+      <a href="#" class="case-cat fade-in">
+        <div class="case-cat-icon">⚖</div>
+        <div class="case-cat-title">交通事故・労災</div>
+        <div class="case-cat-sub">後遺障害・等級認定・損害賠償</div>
+      </a>
+      <a href="#" class="case-cat fade-in fade-in-delay-1">
+        <div class="case-cat-icon">🏥</div>
+        <div class="case-cat-title">医療過誤</div>
+        <div class="case-cat-sub">手術・診断・処置に関する訴訟</div>
+      </a>
+      <a href="#" class="case-cat fade-in fade-in-delay-2">
+        <div class="case-cat-icon">📜</div>
+        <div class="case-cat-title">遺言能力鑑定</div>
+        <div class="case-cat-sub">認知症・判断能力に関する鑑定</div>
+      </a>
+    </div>
+
+    <!-- 準備中バナー -->
+    <div class="fade-in" style="margin-top:2px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:40px;text-align:center;">
+      <div style="font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:16px;">COMING SOON</div>
+      <p style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:400;color:rgba(255,255,255,0.85);margin-bottom:12px;letter-spacing:0.06em;">具体的な事例は順次公開予定です</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:2;">サービス開始に向け、対応事例を蓄積中です。<br>類似のご相談はお気軽にお問い合わせください。専門スタッフが丁寧にお答えします。</p>
+    </div>
+
+    <div class="service-more fade-in" style="margin-top:32px;">
+      <a href="#" class="view-more" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.4);">お問い合わせはこちら →</a>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="section voice" id="voice">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-en">Voice</span>
+      <span class="section-ja">お客様の声</span>
+      <p class="section-lead">サービス開始後、順次掲載予定です。まずはお気軽にご相談ください。</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- 準備中メッセージ -->
+    <div class="fade-in" style="background:var(--white);border:1px solid var(--border);padding:64px 40px;text-align:center;margin-bottom:40px;">
+      <div style="width:64px;height:64px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      <div style="font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:16px;">COMING SOON</div>
+      <p style="font-family:'Noto Serif JP',serif;font-size:20px;font-weight:400;color:var(--navy);margin-bottom:16px;letter-spacing:0.06em;">お客様の声を募集中です</p>
+      <p style="font-size:13px;color:var(--gray);line-height:2;max-width:520px;margin:0 auto;">サービス開始に伴い、ご利用いただいた弁護士の先生方からの声を順次掲載してまいります。現在、初回ご利用のモニター様を募集中です。ぜひお気軽にご相談ください。</p>
+    </div>
+
+    <!-- モニター募集CTA -->
+    <div class="fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+      <div style="background:var(--off-white);border:1px solid var(--border);padding:32px 36px;">
+        <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:10px;">MONITOR</div>
+        <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:10px;">初回モニター募集中</h4>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;">サービス立ち上げにあたり、初回ご利用の弁護士様を特別条件でご案内しています。お気軽にお問い合わせください。</p>
+      </div>
+      <div style="background:var(--off-white);border:1px solid var(--border);padding:32px 36px;">
+        <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:10px;">CONSULTATION</div>
+        <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:10px;">まず相談だけでもOK</h4>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;">「こんな案件に使えるか？」という段階のご相談も無料で承ります。弁護士が窓口となり、丁寧にお答えします。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INTERVIEW -->
+<section class="section interview" id="interview">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-en">Lawyer</span>
+      <span class="section-ja">窓口弁護士のご紹介</span>
+      <p class="section-lead">協力医のタスケルでは、弁護士が直接窓口となりご対応します。</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- 弁護士カード 横並び -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+
+      <!-- 1人目 -->
+      <div class="interview-card fade-in" style="margin-bottom:0;">
+        <div class="interview-img">
+          <span class="interview-img-placeholder">LAWYER</span>
+        </div>
+        <div class="interview-content">
+          <div class="interview-tags">
+            <span class="tag">交通事故・労災</span>
+            <span class="tag">医療過誤</span>
+          </div>
+          <h3 class="interview-name">○○ ○○ 弁護士</h3>
+          <div class="interview-firm">○○法律事務所</div>
+          <div class="interview-bar">○○弁護士会所属</div>
+          <div style="font-size:11px;color:var(--gray);margin-bottom:8px;letter-spacing:0.08em;">対応サービス</div>
+          <div class="interview-services">
+            <span class="service-badge">協力医サービス</span>
+            <span class="service-badge">医療鑑定意見書作成</span>
+          </div>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;">医療訴訟の実務経験を活かし、弁護士と専門医の橋渡しを担います。案件の初期段階から丁寧にヒアリングし、最適な専門医をご紹介します。</p>
+        </div>
+      </div>
+
+      <!-- 2人目 -->
+      <div class="interview-card fade-in fade-in-delay-1" style="margin-bottom:0;">
+        <div class="interview-img">
+          <span class="interview-img-placeholder">LAWYER</span>
+        </div>
+        <div class="interview-content">
+          <div class="interview-tags">
+            <span class="tag">遺言能力鑑定</span>
+            <span class="tag">医療過誤</span>
+          </div>
+          <h3 class="interview-name">○○ ○○ 弁護士</h3>
+          <div class="interview-firm">○○法律事務所</div>
+          <div class="interview-bar">○○弁護士会所属</div>
+          <div style="font-size:11px;color:var(--gray);margin-bottom:8px;letter-spacing:0.08em;">対応サービス</div>
+          <div class="interview-services">
+            <span class="service-badge">協力医サービス</span>
+            <span class="service-badge">医療鑑定意見書作成</span>
+          </div>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;">遺言能力や医療過誤に関する案件を中心に対応。医学的な専門知識と法的構成を組み合わせ、弁護士の立場に寄り添ったサポートを提供します。</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="section news" id="news">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-en">News</span>
+      <span class="section-ja">お知らせ</span>
+      <div class="section-divider"></div>
+    </div>
+    <div class="news-list fade-in">
+      <a href="#" class="news-item">
+        <span class="news-date">2025.11.27</span>
+        <span class="news-cat">お知らせ</span>
+        <span class="news-title">〈年末年始休業のお知らせ〉12月26日は10時〜12時までの短縮営業となります。また12月27日〜1月4日は年末年始休業とさせていただきます。</span>
+        <span class="news-arrow">→</span>
+      </a>
+      <a href="#" class="news-item">
+        <span class="news-date">2025.9.16</span>
+        <span class="news-cat">更新</span>
+        <span class="news-title">ホームページをリニューアルいたしました。</span>
+        <span class="news-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-en">Contact</span>
+      <span class="section-ja">お問い合わせ</span>
+      <p class="section-lead">ご相談・お見積りは無料です。お気軽にお問い合わせください。医療鑑定のエキスパートがサポートいたします。</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block fade-in">
+        <h3 class="contact-block-title">無料お問い合わせ</h3>
+        <p class="contact-block-desc">弁護士様以外のご依頼は承っておりません。予めご了承ください。</p>
+        <a href="#" class="contact-btn">お問い合わせフォーム</a>
+      </div>
+      <div class="contact-block fade-in fade-in-delay-1">
+        <h3 class="contact-block-title">無料資料ダウンロード</h3>
+        <p class="contact-block-desc">詳しいご説明資料（弁護士の先生向け）や鑑定意見書等のサンプル、依頼者様向けのチラシをご提供しております。</p>
+        <a href="#" class="contact-btn-outline">資料一覧を見る</a>
+        <div class="contact-note">
+          弁護士向けサービスとなっておりますので、お問い合わせは弁護士のみの受付とさせていただいております。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo">協力医のタスケル</div>
+      <div class="footer-logo-sub">KYORYOKU-I NO TASUKERU</div>
+      <div class="footer-company">
+        運営：株式会社〇〇<br>
+        〒○○○-○○○○ ○○都○○区○○町○丁目○番地<br>
+        TEL：○○-○○○○-○○○○
+      </div>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-nav-group">
+        <div class="footer-nav-title">MENU</div>
+        <div class="footer-nav-links">
+          <a href="#">ホーム</a>
+          <a href="#">協力医とは</a>
+          <a href="#">サービス</a>
+          <a href="#">対応できる案件</a>
+        </div>
+      </div>
+      <div class="footer-nav-group">
+        <div class="footer-nav-title">SUPPORT</div>
+        <div class="footer-nav-links">
+          <a href="#">お客様の声</a>
+          <a href="#">窓口弁護士のご紹介</a>
+          <a href="#">よくあるご質問</a>
+          <a href="#">お知らせ</a>
+        </div>
+      </div>
+      <div class="footer-nav-group">
+        <div class="footer-nav-title">INFO</div>
+        <div class="footer-nav-links">
+          <a href="#">会社概要</a>
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">お問い合わせ</a>
+          <a href="#">資料ダウンロード</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">©2025 協力医のタスケル, All Rights Reserved.</span>
+    <div class="footer-links">
+      <a href="#">お問い合わせ</a>
+      <a href="#">資料ダウンロード</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
+  header.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
