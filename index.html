@@ -917,18 +917,135 @@ footer {
 .footer-links a { font-size: 11px; color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: rgba(255,255,255,0.5); }
 
+/* モバイルナビ */
+#mobileNav.open { display: flex !important; }
 @media (max-width: 768px) {
-  .mv-inner { grid-template-columns: 1fr; padding: 48px 20px; }
+  #menuBtn { display: flex !important; }
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* タブレット（〜1024px） */
+@media (max-width: 1024px) {
+  .header-main { padding: 0 20px; }
+  nav a { padding: 0 10px; font-size: 12px; }
+  .header-cta { margin-left: 12px; gap: 8px; }
+  .btn-tel { display: none; }
+  .mv-inner { grid-template-columns: 1fr 360px; gap: 40px; }
+  .section-inner { padding: 0 24px; }
+  .reason-grid { grid-template-columns: 1fr 1fr; }
+  .footer-nav { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+/* スマホ（〜768px） */
+@media (max-width: 768px) {
+
+  /* ヘッダー */
+  .header-top { display: none; }
+  .header-main {
+    padding: 0 16px;
+    height: 60px;
+    flex-wrap: wrap;
+  }
+  nav { display: none; }
+  .header-cta { margin-left: auto; gap: 8px; }
+  .btn-outline { display: none; }
+  .btn-fill { padding: 8px 14px; font-size: 11px; }
+  .logo-main { font-size: 15px; }
+  .logo-sub { font-size: 9px; }
+
+  /* MV */
+  .mv { margin-top: 60px; min-height: auto; }
+  .mv-inner {
+    grid-template-columns: 1fr;
+    padding: 48px 20px 40px;
+    gap: 32px;
+  }
+  .mv-title { font-size: clamp(26px, 7vw, 38px); }
+  .mv-eyebrow { font-size: 10px; }
+  .mv-desc { font-size: 13px; }
+  .mv-cta { flex-direction: column; gap: 10px; }
+  .mv-btn-primary, .mv-btn-secondary { text-align: center; padding: 14px 24px; }
   .mv-stats-grid { grid-template-columns: 1fr 1fr; }
   .mv-stat { padding: 20px 16px; }
-  .mv-title { font-size: clamp(26px, 6vw, 40px); }
-  .section-inner { padding: 0 20px; }
+  .mv-stat-num { font-size: 22px !important; }
+
+  /* セクション共通 */
+  .section { padding: 64px 0; }
+  .section-inner { padding: 0 16px; }
+  .section-ja { font-size: 22px; }
+
+  /* サービスフロー */
+  .service-flow {
+    flex-direction: column;
+    border: 1px solid var(--border);
+  }
+  .service-flow-item { padding: 16px 20px; }
+  .service-flow-item::after {
+    content: '↓';
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -14px;
+    transform: translateX(-50%);
+  }
+
+  /* サービスカード */
   .service-cards { grid-template-columns: 1fr; }
+
+  /* 選ばれる理由 */
   .reason-grid { grid-template-columns: 1fr; }
-  .voice-cards { grid-template-columns: 1fr; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .footer-main { grid-template-columns: 1fr; gap: 32px; }
-  .footer-nav { grid-template-columns: 1fr 1fr; }
+  .reason-item { padding: 24px 20px; gap: 16px; }
+  .reason-num { font-size: 36px; width: 40px; }
+
+  /* Case */
+  .case-cats { grid-template-columns: 1fr; }
+  .case-cat { padding: 28px 20px; }
+
+  /* インタビュー */
+  .interview-card { grid-template-columns: 1fr; }
+  .interview-img { min-height: 160px; }
+
+  /* フッター */
+  .footer-main { grid-template-columns: 1fr; gap: 32px; padding: 40px 16px 24px; }
+  .footer-nav { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer-bottom { padding: 16px; flex-direction: column; gap: 8px; text-align: center; }
+
+  /* インライングリッドのスマホ対応 */
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns:repeat(3"],
+  [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns:repeat(4"],
+  [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* 料金テーブル */
+  [style*="justify-content:space-between"][style*="align-items:baseline"],
+  [style*="justify-content: space-between"][style*="align-items: baseline"] {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start !important;
+  }
+
+  /* FAQ */
+  #faq details { padding: 20px 16px; }
+  #faq summary { font-size: 13px; }
+}
+
+/* 小さいスマホ（〜375px） */
+@media (max-width: 375px) {
+  .mv-stats-grid { grid-template-columns: 1fr; }
+  .mv-title { font-size: 24px; }
+  [style*="grid-template-columns:repeat(4"],
+  [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* ===== FAQ ===== */
@@ -994,9 +1111,24 @@ details:not([open]) summary .faq-icon::before { content: '＋'; }
     </nav>
     <div class="header-cta">
       <a href="#contact" class="btn-fill">初回お問い合わせ（無料）</a>
+      <!-- ハンバーガーメニュー（スマホ用） -->
+      <button id="menuBtn" aria-label="メニュー" style="display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;" onclick="document.getElementById('mobileNav').classList.toggle('open')">
+        <span style="display:block;width:22px;height:2px;background:var(--navy);transition:0.3s;"></span>
+        <span style="display:block;width:22px;height:2px;background:var(--navy);transition:0.3s;"></span>
+        <span style="display:block;width:22px;height:2px;background:var(--navy);transition:0.3s;"></span>
+      </button>
     </div>
   </div>
 </header>
+
+<!-- モバイルナビ -->
+<div id="mobileNav" style="display:none;position:fixed;top:60px;left:0;right:0;background:var(--white);border-top:1px solid var(--border);z-index:99;padding:24px 16px;flex-direction:column;gap:0;box-shadow:0 8px 24px rgba(0,0,0,0.1);">
+  <a href="#service" onclick="document.getElementById('mobileNav').classList.remove('open')" style="display:block;padding:14px 0;border-bottom:1px solid var(--gray-light);font-size:14px;color:var(--text-mid);text-decoration:none;letter-spacing:0.04em;">サービス</a>
+  <a href="#case" onclick="document.getElementById('mobileNav').classList.remove('open')" style="display:block;padding:14px 0;border-bottom:1px solid var(--gray-light);font-size:14px;color:var(--text-mid);text-decoration:none;letter-spacing:0.04em;">対応可能な案件</a>
+  <a href="#pricing" onclick="document.getElementById('mobileNav').classList.remove('open')" style="display:block;padding:14px 0;border-bottom:1px solid var(--gray-light);font-size:14px;color:var(--text-mid);text-decoration:none;letter-spacing:0.04em;">料金</a>
+  <a href="#faq" onclick="document.getElementById('mobileNav').classList.remove('open')" style="display:block;padding:14px 0;border-bottom:1px solid var(--gray-light);font-size:14px;color:var(--text-mid);text-decoration:none;letter-spacing:0.04em;">よくあるご質問</a>
+  <a href="#contact" onclick="document.getElementById('mobileNav').classList.remove('open')" style="display:block;margin-top:16px;padding:14px;background:var(--blue);color:var(--white);text-align:center;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.1em;">初回お問い合わせ（無料）</a>
+</div>
 
 <!-- MV -->
 <section class="mv">
