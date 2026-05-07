@@ -917,6 +917,44 @@ footer {
 .footer-links a { font-size: 11px; color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: rgba(255,255,255,0.5); }
 
+@media (max-width: 768px) {
+  .mv-inner { grid-template-columns: 1fr; padding: 48px 20px; }
+  .mv-stats-grid { grid-template-columns: 1fr 1fr; }
+  .mv-stat { padding: 20px 16px; }
+  .mv-title { font-size: clamp(26px, 6vw, 40px); }
+  .section-inner { padding: 0 20px; }
+  .service-cards { grid-template-columns: 1fr; }
+  .reason-grid { grid-template-columns: 1fr; }
+  .voice-cards { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-main { grid-template-columns: 1fr; gap: 32px; }
+  .footer-nav { grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== FAQ ===== */
+details summary { user-select: none; }
+details[open] summary .faq-icon::before { content: '－'; }
+details:not([open]) summary .faq-icon::before { content: '＋'; }
+.faq-icon { font-size: 18px; color: var(--accent); flex-shrink: 0; margin-left: 16px; }
+
+/* ===== COLUMN CARD HOVER ===== */
+.column-card {
+  display: block;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  padding: 32px 28px;
+  text-decoration: none;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.column-card:hover {
+  box-shadow: 0 8px 40px rgba(13,31,60,0.10);
+  transform: translateY(-4px);
+}
+
+/* ===== CASE CAT HOVER ===== */
+.case-cat { transition: background 0.2s; }
+.case-cat:hover { background: rgba(255,255,255,0.08); }
+
 /* ===== SCROLL ANIMATION ===== */
 .fade-in {
   opacity: 0;
@@ -949,13 +987,13 @@ footer {
       <span class="logo-sub">株式会社〇〇</span>
     </a>
     <nav>
-      <a href="#">協力医とは</a>
-      <a href="#">活動内容</a>
-      <a href="#">よくあるご質問</a>
+      <a href="#service">サービス</a>
+      <a href="#case">対応可能な案件</a>
+      <a href="#pricing">料金</a>
+      <a href="#faq">よくあるご質問</a>
     </nav>
     <div class="header-cta">
-      <a href="#" class="btn-outline">資料DL</a>
-      <a href="#" class="btn-fill">無料でお問い合わせ</a>
+      <a href="#contact" class="btn-fill">初回お問い合わせ（無料）</a>
     </div>
   </div>
 </header>
@@ -968,15 +1006,15 @@ footer {
       <span class="mv-eyebrow">弁護士と医師をつなぐ、実務に強いサービス</span>
       <h1 class="mv-title">
         弁護士と医師をつなぎ<br>
-        <em>専門性の高い</em><br>
-        医療訴訟をサポート
+        <em>医療訴訟を</em><br>
+        実務面から支援
       </h1>
       <p class="mv-desc">
-        法と医を理解するエキスパートが、弁護士と専門医の橋渡しを担います。オンライン・メッセージ・電話でのアドバイス・期日への付き添い・主張の医学的助言を通じて、裁判の開始から判決まで継続してサポートします。
+        医療訴訟に、ひとりで悩まないために。弁護士と医師が事前相談から関わり、協力医のご紹介、医学的意見書作成、判決までの支援に対応。初めての医療訴訟にも、安心して取り組める体制を提供します。
       </p>
       <div class="mv-cta">
-        <a href="#" class="mv-btn-primary">無料でお問い合わせ</a>
-        <a href="#" class="mv-btn-secondary">サービスを見る</a>
+        <a href="#contact" class="mv-btn-primary">初回お問い合わせ（無料）</a>
+        <a href="#service" class="mv-btn-secondary">サービスを見る</a>
       </div>
       <div class="mv-notice">
         <div class="mv-notice-label">INFORMATION</div>
@@ -986,28 +1024,28 @@ footer {
     <div class="mv-visual">
       <div class="mv-stats-grid">
         <div class="mv-stat">
-          <div class="mv-stat-icon">WINDOW</div>
-          <div class="mv-stat-num" style="font-size:26px;line-height:1.4;margin-bottom:10px;">弁護士が<br>窓口対応</div>
-          <div class="mv-stat-label">法律の専門家が直接担当</div>
-          <div class="mv-stat-sub">安心・丁寧なサポート</div>
+          <div class="mv-stat-icon">CONSULT</div>
+          <div class="mv-stat-num" style="font-size:22px;line-height:1.4;margin-bottom:10px;">弁護士・医師<br>による事前相談</div>
+          <div class="mv-stat-label">過失・因果関係の見通しを検討</div>
+          <div class="mv-stat-sub">代替案のご提案も可能</div>
         </div>
         <div class="mv-stat">
-          <div class="mv-stat-icon">COVERAGE</div>
-          <div class="mv-stat-num" style="font-size:26px;line-height:1.4;margin-bottom:10px;">全国<br>対応</div>
-          <div class="mv-stat-label">対応エリア</div>
-          <div class="mv-stat-sub">メール・電話・オンライン</div>
+          <div class="mv-stat-icon">DOCUMENT</div>
+          <div class="mv-stat-num" style="font-size:22px;line-height:1.4;margin-bottom:10px;">医学的<br>意見書作成</div>
+          <div class="mv-stat-label">医療記録に基づき作成支援</div>
+          <div class="mv-stat-sub">過失・因果関係に対応</div>
+        </div>
+        <div class="mv-stat">
+          <div class="mv-stat-icon">SUPPORT</div>
+          <div class="mv-stat-num" style="font-size:22px;line-height:1.4;margin-bottom:10px;">裁判進行に応じた<br>医学的支援</div>
+          <div class="mv-stat-label">準備段階から判決まで</div>
+          <div class="mv-stat-sub">医師への相談・助言を継続</div>
         </div>
         <div class="mv-stat">
           <div class="mv-stat-icon">DOCTOR</div>
-          <div class="mv-stat-num" style="font-size:26px;line-height:1.4;margin-bottom:10px;">専門医が<br>医療助言</div>
-          <div class="mv-stat-label">各分野の専門医が対応</div>
-          <div class="mv-stat-sub">豊富な医療知識でサポート</div>
-        </div>
-        <div class="mv-stat">
-          <div class="mv-stat-icon">CERTIFIED</div>
-          <div class="mv-stat-num" style="font-size:26px;line-height:1.4;margin-bottom:10px;">判決まで<br>継続支援</div>
-          <div class="mv-stat-label">裁判開始前から終了まで</div>
-          <div class="mv-stat-sub">一貫したサポート体制</div>
+          <div class="mv-stat-num" style="font-size:22px;line-height:1.4;margin-bottom:10px;">協力医の<br>選定・ご紹介</div>
+          <div class="mv-stat-label">案件に応じた専門医を選定</div>
+          <div class="mv-stat-sub">全国対応・オンライン相談可</div>
         </div>
       </div>
     </div>
@@ -1037,22 +1075,20 @@ footer {
       <!-- 協力医サービス 3つの特徴 -->
       <div class="fade-in" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:28px;">
 
-        <!-- 特徴①：アドバイス -->
+        <!-- 特徴①：事前相談 -->
         <div style="background:var(--white);border:1px solid var(--border);padding:36px 32px;position:relative;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.12)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
-          <!-- 背景装飾数字 -->
           <div style="position:absolute;top:-10px;right:16px;font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:var(--gray-light);line-height:1;pointer-events:none;user-select:none;">01</div>
-          <!-- アイコン -->
           <div style="width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
             </svg>
           </div>
-          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">ADVICE</div>
-          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">多様な手段での<br>医学的アドバイス</h4>
-          <p style="font-size:13px;color:var(--gray);line-height:1.9;">オンライン・メッセージ・電話など様々な手段で医学的見地から弁護士の疑問に答え、事案の論点整理や戦略立案を継続的にサポートします。</p>
+          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">CONSULT</div>
+          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">弁護士・医師による<br>事前相談</h4>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;">過失や因果関係の見通しを検討し、案件に応じた進め方を整理します。</p>
         </div>
 
-        <!-- 特徴②：付き添い -->
+        <!-- 特徴②：協力医との連携 -->
         <div style="background:var(--white);border:1px solid var(--border);padding:36px 32px;position:relative;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.12)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
           <div style="position:absolute;top:-10px;right:16px;font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:var(--gray-light);line-height:1;pointer-events:none;user-select:none;">02</div>
           <div style="width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
@@ -1060,22 +1096,22 @@ footer {
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
           </div>
-          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">ATTENDANCE</div>
-          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">裁判期日への<br>専門医として付き添い</h4>
-          <p style="font-size:13px;color:var(--gray);line-height:1.9;">裁判期日に専門医として同席し、医学的な質問や証言に対してリアルタイムでサポートします。</p>
+          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">COORDINATE</div>
+          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">協力医の選定・<br>ご紹介</h4>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;">案件内容や診療科に応じて専門医を選定し、継続的に相談できる体制を整えます。</p>
         </div>
 
-        <!-- 特徴③：主張の助言 -->
+        <!-- 特徴③：継続支援 -->
         <div style="background:var(--white);border:1px solid var(--border);padding:36px 32px;position:relative;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.12)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
           <div style="position:absolute;top:-10px;right:16px;font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:var(--gray-light);line-height:1;pointer-events:none;user-select:none;">03</div>
           <div style="width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
             </svg>
           </div>
-          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">ASSERTION</div>
-          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">弁護士の主張への<br>医学的助言・補強</h4>
-          <p style="font-size:13px;color:var(--gray);line-height:1.9;">弁護士の主張に対し医学的根拠を補強。裁判終了まで継続して専門家として伴走します。</p>
+          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">SUPPORT</div>
+          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">裁判進行に応じた<br>医学的支援</h4>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;">裁判の進行に応じて、医学的助言や相談対応を継続的に行います。</p>
         </div>
 
       </div>
@@ -1085,23 +1121,23 @@ footer {
       <div class="service-flow fade-in">
         <div class="service-flow-item">
           <div class="flow-step">STEP 01</div>
-          <div class="flow-title">ご相談・マッチング</div>
-          <div class="flow-sub">事案内容のヒアリング<br>専門医の選定</div>
+          <div class="flow-title">事前相談</div>
+          <div class="flow-sub">事案内容のヒアリング<br>医療記録・争点の確認</div>
         </div>
         <div class="service-flow-item">
           <div class="flow-step">STEP 02</div>
-          <div class="flow-title">契約・着手</div>
-          <div class="flow-sub">協力内容・期間の<br>合意・契約締結</div>
+          <div class="flow-title">協力医の選定・契約</div>
+          <div class="flow-sub">診療科・争点に応じた<br>専門医の選定・契約条件の調整</div>
         </div>
         <div class="service-flow-item">
           <div class="flow-step">STEP 03</div>
-          <div class="flow-title">アドバイス・付き添い</div>
-          <div class="flow-sub">期日への同席<br>医学的見解の提供</div>
+          <div class="flow-title">医学的支援の開始</div>
+          <div class="flow-sub">相談・助言<br>主張整理や論点検討を支援</div>
         </div>
         <div class="service-flow-item">
           <div class="flow-step">STEP 04</div>
-          <div class="flow-title">主張の助言・裁判終了</div>
-          <div class="flow-sub">継続サポートで<br>判決まで伴走</div>
+          <div class="flow-title">裁判進行に応じた追加支援</div>
+          <div class="flow-sub">裁判中の新たな争点に対応<br>追加助言・意見書の補充</div>
         </div>
       </div>
     </div>
@@ -1128,8 +1164,8 @@ footer {
             </svg>
           </div>
           <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">POINT 01</div>
-          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">希望に沿わない意見書は<br>作成させない</h4>
-          <p style="font-size:13px;color:var(--gray);line-height:1.9;">弁護士の意図と乖離した内容にならないよう、鑑定事項の設定から専門医への情報共有まで、一貫して弁護士の立場に寄り添いながら進めます。</p>
+          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">医学的根拠に基づいた<br>意見書作成</h4>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;">医療記録を精査し、過失・因果関係について医学的に説明可能な範囲を検討します。ご希望の構成が難しい場合でも、弁護士と医師が連携し、別の観点からの主張構成や代替案をご提案します。</p>
         </div>
 
         <!-- POINT 02 -->
@@ -1141,8 +1177,8 @@ footer {
             </svg>
           </div>
           <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:8px;">POINT 02</div>
-          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">弁護士が監修し<br>裁判で使える意見書を作成</h4>
-          <p style="font-size:13px;color:var(--gray);line-height:1.9;">弁護士が法的構成を監修した上で専門医が意見書を作成。裁判所が求める形式・内容を満たした、実務で即戦力となる鑑定意見書を提供します。</p>
+          <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:12px;letter-spacing:0.04em;line-height:1.7;">弁護士監修による<br>裁判実務を意識した意見書</h4>
+          <p style="font-size:13px;color:var(--gray);line-height:1.9;">医療過誤訴訟に精通した弁護士が法的構成を確認し、専門医が医学的見解を作成。裁判所に伝わる形式・内容を意識した、裁判実務での使用を見据えた医学的意見書の作成を支援します。</p>
         </div>
 
       </div>
@@ -1152,18 +1188,18 @@ footer {
       <div class="service-flow fade-in" style="margin-bottom:28px;">
         <div class="service-flow-item">
           <div class="flow-step">STEP 01</div>
-          <div class="flow-title">簡易スクリーニング</div>
+          <div class="flow-title">事前相談・スクリーニング</div>
           <div class="flow-sub">初期判断・方針決定</div>
         </div>
         <div class="service-flow-item">
           <div class="flow-step">STEP 02</div>
-          <div class="flow-title">鑑定レポート作成</div>
-          <div class="flow-sub">訴訟外・示談・異議申立</div>
+          <div class="flow-title">報告書作成</div>
+          <div class="flow-sub">医療記録・論点の整理<br>意見書作成の見通しを確認</div>
         </div>
         <div class="service-flow-item">
           <div class="flow-step">STEP 03</div>
           <div class="flow-title">鑑定意見書作成</div>
-          <div class="flow-sub">訴訟用・証拠提出</div>
+          <div class="flow-sub">専門医による医学的見解の作成<br>弁護士による法的観点の確認</div>
         </div>
       </div>
 
@@ -1171,21 +1207,21 @@ footer {
       <div class="service-cards">
         <div class="service-card fade-in">
           <div class="service-card-num">01</div>
-          <div class="service-card-tag">初期診断</div>
-          <h3 class="service-card-title">簡易スクリーニング</h3>
-          <p class="service-card-desc">弁護士が抱える事案に対して、医師による簡易的な見解を提供。訴訟対応の必要性や、今後どのような鑑定が適切かを検討する判断材料としてご活用いただけます。</p>
+          <div class="service-card-tag">初期判断</div>
+          <h3 class="service-card-title">事前相談・スクリーニング</h3>
+          <p class="service-card-desc">事案の概要と医療記録をもとに、弁護士と医師が過失・因果関係の見通しを簡易的に整理します。意見書作成に進む前の判断材料として活用いただけます。</p>
         </div>
         <div class="service-card fade-in fade-in-delay-1">
           <div class="service-card-num">02</div>
-          <div class="service-card-tag">訴訟外</div>
-          <h3 class="service-card-title">鑑定レポート作成</h3>
-          <p class="service-card-desc">訴訟外での交渉や異議申し立て、示談交渉において提出する鑑定レポートを作成します。目的に応じて柔軟に対応し、法的主張の補強や適切な解決に貢献します。</p>
+          <div class="service-card-tag">訴訟前対応</div>
+          <h3 class="service-card-title">報告書作成</h3>
+          <p class="service-card-desc">医療記録や争点を整理し、専門医の医学的見解を報告書としてまとめます（医師の押印なし）。示談交渉・訴訟提起前の方針整理など、裁判外での主張構成の補強に活用できます。</p>
         </div>
         <div class="service-card fade-in fade-in-delay-2">
           <div class="service-card-num">03</div>
-          <div class="service-card-tag">訴訟用</div>
+          <div class="service-card-tag">裁判提出用</div>
           <h3 class="service-card-title">鑑定意見書作成</h3>
-          <p class="service-card-desc">訴訟に発展した場合には、裁判所に提出する正式な鑑定意見書を作成。専門医が医学的見地から争点を整理し、実務に役立つ精度の高い書面で立証を支援します。</p>
+          <p class="service-card-desc">訴訟に発展した場合に、裁判所への提出を想定した正式な鑑定意見書を作成します。専門医の医学的見地から争点を整理し、弁護士による法的観点の確認を経て、立証活動を支援します。</p>
         </div>
       </div>
     </div>
@@ -1202,36 +1238,36 @@ footer {
     <div class="section-header fade-in">
       <span class="section-en">Reason</span>
       <span class="section-ja">選ばれる理由</span>
-      <p class="section-lead">協力医のタスケルが多くの弁護士に選ばれる理由を、4つの視点からご紹介します。</p>
+      <p class="section-lead">医療訴訟に取り組む弁護士を、事前相談から判決まで支える4つの強みをご紹介します。</p>
       <div class="section-divider"></div>
     </div>
     <div class="reason-grid">
       <div class="reason-item fade-in">
         <div class="reason-num">01</div>
         <div class="reason-content">
-          <h3 class="reason-title">弁護士が立ち上げた<br><em>実務に根ざしたサービス</em></h3>
-          <p class="reason-desc">協力医のタスケルは、弁護士が自ら立ち上げたサービスです。法廷の実務をよく知る弁護士が窓口となり、医師と弁護士の間に生じるコミュニケーションのギャップを埋め、実践的なサポートを提供します。</p>
+          <h3 class="reason-title">医療訴訟の実務を理解した<br><em>弁護士が関与</em></h3>
+          <p class="reason-desc">医療過誤訴訟に精通した弁護士が、事前相談の段階から直接関与します。法的な観点から争点を整理し、医師との橋渡しを担うことで、方向性のズレを防ぎます。</p>
         </div>
       </div>
       <div class="reason-item fade-in fade-in-delay-1">
         <div class="reason-num">02</div>
         <div class="reason-content">
-          <h3 class="reason-title">各分野の専門医が<br><em>直接アドバイス</em></h3>
-          <p class="reason-desc">整形外科・脳神経外科・精神科など、案件に応じた各分野の専門医が対応。オンライン・メッセージ・電話など多様な手段で、医学的見地から弁護士の疑問に迅速に答えます。</p>
+          <h3 class="reason-title">医師と弁護士の<br><em>認識のズレを整理</em></h3>
+          <p class="reason-desc">医学的見解と法的主張がかみ合わないケースは少なくありません。弁護士と専門医が連携して見通しを確認するため、意見書作成に進む前に論点を整理できます。</p>
         </div>
       </div>
       <div class="reason-item fade-in fade-in-delay-2">
         <div class="reason-num">03</div>
         <div class="reason-content">
-          <h3 class="reason-title">裁判開始前から<br><em>判決まで継続サポート</em></h3>
-          <p class="reason-desc">一般的な鑑定書作成にとどまらず、裁判が始まる前の準備段階から期日への付き添い・主張の医学的助言まで、一貫して専門医が伴走します。途中で担当が変わることなく、最後まで同じ専門医が対応します。</p>
+          <h3 class="reason-title">意見書作成前に<br><em>見通しを確認</em></h3>
+          <p class="reason-desc">いきなり意見書作成に進むのではなく、事前相談・報告書の段階で「作成できるか」「どのような構成が有効か」を確認してから進めます。無駄なコストを抑えられます。</p>
         </div>
       </div>
       <div class="reason-item fade-in fade-in-delay-3">
         <div class="reason-num">04</div>
         <div class="reason-content">
-          <h3 class="reason-title">希望に沿った<br><em>裁判で使える意見書</em></h3>
-          <p class="reason-desc">弁護士が法的構成を監修した上で専門医が意見書を作成。弁護士の意図と乖離しないよう鑑定事項を丁寧に設定し、裁判所が求める形式・内容を満たした実務で即戦力となる鑑定意見書を提供します。</p>
+          <h3 class="reason-title">紹介後も相談・<br><em>意見補充まで継続対応</em></h3>
+          <p class="reason-desc">協力医を紹介して終わりではありません。裁判の進行に応じた追加相談・助言・意見の補充にも継続して対応します。判決まで伴走できる体制を整えています。</p>
         </div>
       </div>
     </div>
@@ -1243,35 +1279,35 @@ footer {
   <div class="section-inner">
     <div class="section-header fade-in">
       <span class="section-en">Coverage</span>
-      <span class="section-ja">対応できる案件</span>
-      <p class="section-lead">医療訴訟に関わる幅広い案件に対応しています。まずはお気軽にご相談ください。</p>
+      <span class="section-ja">対応可能な案件</span>
+      <p class="section-lead">医療過誤訴訟を中心に、医学的判断が争点となる案件に対応しています。診療科や争点が明確でない段階でも、まずはご相談ください。</p>
       <div class="section-divider"></div>
     </div>
 
-    <!-- 対応領域 3カード -->
+    <!-- 対応領域 3カード（医療過誤を先頭に） -->
     <div class="case-cats">
       <a href="#" class="case-cat fade-in">
-        <div class="case-cat-icon">⚖</div>
-        <div class="case-cat-title">交通事故・労災</div>
-        <div class="case-cat-sub">後遺障害・等級認定・損害賠償</div>
+        <div class="case-cat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg></div>
+        <div class="case-cat-title">医療過誤</div>
+        <div class="case-cat-sub">手術・診断・処置に関する過失や因果関係の検討</div>
       </a>
       <a href="#" class="case-cat fade-in fade-in-delay-1">
-        <div class="case-cat-icon">🏥</div>
-        <div class="case-cat-title">医療過誤</div>
-        <div class="case-cat-sub">手術・診断・処置に関する訴訟</div>
+        <div class="case-cat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="case-cat-title">交通事故・労災</div>
+        <div class="case-cat-sub">後遺障害・等級認定・損害賠償に関する医学的見解</div>
       </a>
       <a href="#" class="case-cat fade-in fade-in-delay-2">
-        <div class="case-cat-icon">📜</div>
+        <div class="case-cat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="case-cat-title">遺言能力鑑定</div>
-        <div class="case-cat-sub">認知症・判断能力に関する鑑定</div>
+        <div class="case-cat-sub">認知症・判断能力に関する医学的評価</div>
       </a>
     </div>
 
-    <!-- 準備中バナー -->
+    <!-- 下部ボックス -->
     <div class="fade-in" style="margin-top:2px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:40px;text-align:center;">
-      <div style="font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:16px;">COMING SOON</div>
-      <p style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:400;color:rgba(255,255,255,0.85);margin-bottom:12px;letter-spacing:0.06em;">具体的な事例は順次公開予定です</p>
-      <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:2;">サービス開始に向け、対応事例を蓄積中です。<br>類似のご相談はお気軽にお問い合わせください。専門スタッフが丁寧にお答えします。</p>
+      <div style="font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:16px;">CONSULTATION</div>
+      <p style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:400;color:rgba(255,255,255,0.85);margin-bottom:12px;letter-spacing:0.06em;">掲載のない案件もご相談ください</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:2;">診療科や争点によって対応可否を確認いたします。<br>医療記録の内容や相談目的を踏まえ、必要な支援をご提案します。</p>
     </div>
 
     <div class="service-more fade-in" style="margin-top:32px;">
@@ -1280,109 +1316,160 @@ footer {
   </div>
 </section>
 
-<!-- VOICE -->
-<section class="section voice" id="voice">
+<!-- FOR LAWYERS -->
+<section class="section service" id="for-lawyers">
   <div class="section-inner">
     <div class="section-header fade-in">
-      <span class="section-en">Voice</span>
-      <span class="section-ja">お客様の声</span>
-      <p class="section-lead">サービス開始後、順次掲載予定です。まずはお気軽にご相談ください。</p>
+      <span class="section-en">For You</span>
+      <span class="section-ja">医療訴訟にお悩みの方へ</span>
       <div class="section-divider"></div>
     </div>
-
-    <!-- 準備中メッセージ -->
-    <div class="fade-in" style="background:var(--white);border:1px solid var(--border);padding:64px 40px;text-align:center;margin-bottom:40px;">
-      <div style="width:64px;height:64px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-        </svg>
-      </div>
-      <div style="font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:16px;">COMING SOON</div>
-      <p style="font-family:'Noto Serif JP',serif;font-size:20px;font-weight:400;color:var(--navy);margin-bottom:16px;letter-spacing:0.06em;">お客様の声を募集中です</p>
-      <p style="font-size:13px;color:var(--gray);line-height:2;max-width:520px;margin:0 auto;">サービス開始に伴い、ご利用いただいた弁護士の先生方からの声を順次掲載してまいります。現在、初回ご利用のモニター様を募集中です。ぜひお気軽にご相談ください。</p>
-    </div>
-
-    <!-- モニター募集CTA -->
     <div class="fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
-      <div style="background:var(--off-white);border:1px solid var(--border);padding:32px 36px;">
-        <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:10px;">MONITOR</div>
-        <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:10px;">初回モニター募集中</h4>
-        <p style="font-size:13px;color:var(--gray);line-height:1.9;">サービス立ち上げにあたり、初回ご利用の弁護士様を特別条件でご案内しています。お気軽にお問い合わせください。</p>
+      <div style="padding:48px 40px;border:1px solid var(--border);">
+        <div style="font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:16px;">THE CHALLENGE</div>
+        <h3 style="font-family:'Noto Serif JP',serif;font-size:20px;font-weight:400;color:var(--navy);margin-bottom:20px;line-height:1.7;letter-spacing:0.05em;">医療訴訟が<br>難しい理由</h3>
+        <p style="font-size:13px;color:var(--gray);line-height:2;">医療過誤訴訟は、医学的知見の理解や協力医の確保が難しく、専門的な判断が求められる分野です。「どの医師に相談すればよいかわからない」「意見書を断られた」「医学的な争点が整理できない」——そうした悩みをお抱えの方はお気軽にご相談ください。</p>
       </div>
-      <div style="background:var(--off-white);border:1px solid var(--border);padding:32px 36px;">
-        <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:10px;">CONSULTATION</div>
-        <h4 style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:10px;">まず相談だけでもOK</h4>
-        <p style="font-size:13px;color:var(--gray);line-height:1.9;">「こんな案件に使えるか？」という段階のご相談も無料で承ります。弁護士が窓口となり、丁寧にお答えします。</p>
+      <div style="padding:48px 40px;background:var(--navy);border:1px solid var(--navy);">
+        <div style="font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:16px;">OUR SOLUTION</div>
+        <h3 style="font-family:'Noto Serif JP',serif;font-size:20px;font-weight:400;color:var(--white);margin-bottom:20px;line-height:1.7;letter-spacing:0.05em;">安心して案件に<br>取り組める体制を</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:2;">協力医のタスケルは、弁護士・法律事務所の方を中心に、医療訴訟や医学的判断が争点となる案件について、事前相談から必要な支援をご案内します。協力医のご紹介・意見書作成・判決までの継続支援を通じて、安心して案件を進められる体制を提供します。</p>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- INTERVIEW -->
-<section class="section interview" id="interview">
+<!-- FAQ -->
+<section class="section" id="faq" style="background:var(--white);">
   <div class="section-inner">
     <div class="section-header fade-in">
-      <span class="section-en">Lawyer</span>
-      <span class="section-ja">窓口弁護士のご紹介</span>
-      <p class="section-lead">協力医のタスケルでは、弁護士が直接窓口となりご対応します。</p>
+      <span class="section-en">FAQ</span>
+      <span class="section-ja">よくあるご質問</span>
+      <div class="section-divider"></div>
+    </div>
+    <div class="fade-in" style="display:flex;flex-direction:column;gap:2px;">
+
+      <details style="background:var(--white);border:1px solid var(--border);padding:24px 32px;cursor:pointer;">
+        <summary style="font-size:14px;font-weight:500;color:var(--navy);letter-spacing:0.04em;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          弁護士以外からの相談は可能ですか？
+          <span style="font-size:18px;color:var(--accent);flex-shrink:0;margin-left:16px;">＋</span>
+        </summary>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-light);">医療訴訟に関わるご相談はお気軽にご連絡ください。内容を確認の上、ご対応いたします。</p>
+      </details>
+
+      <details style="background:var(--white);border:1px solid var(--border);padding:24px 32px;cursor:pointer;">
+        <summary style="font-size:14px;font-weight:500;color:var(--navy);letter-spacing:0.04em;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          医療記録がすべて揃っていなくても相談できますか？
+          <span style="font-size:18px;color:var(--accent);flex-shrink:0;margin-left:16px;">＋</span>
+        </summary>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-light);">はい、ご相談いただけます。まず事案の概要をお聞きし、必要な資料や今後の進め方についてご案内いたします。</p>
+      </details>
+
+      <details style="background:var(--white);border:1px solid var(--border);padding:24px 32px;cursor:pointer;">
+        <summary style="font-size:14px;font-weight:500;color:var(--navy);letter-spacing:0.04em;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          協力医の紹介だけ依頼できますか？
+          <span style="font-size:18px;color:var(--accent);flex-shrink:0;margin-left:16px;">＋</span>
+        </summary>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-light);">はい、対応可能です。協力医のご紹介のみのご依頼もお受けしております。まずはお問い合わせください。</p>
+      </details>
+
+      <details style="background:var(--white);border:1px solid var(--border);padding:24px 32px;cursor:pointer;">
+        <summary style="font-size:14px;font-weight:500;color:var(--navy);letter-spacing:0.04em;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          医学的意見書の作成だけ依頼できますか？
+          <span style="font-size:18px;color:var(--accent);flex-shrink:0;margin-left:16px;">＋</span>
+        </summary>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-light);">はい、医学的意見書作成のみのご依頼も承っております。事前相談・報告書作成・鑑定意見書など、ご状況に応じてご提案いたします。</p>
+      </details>
+
+      <details style="background:var(--white);border:1px solid var(--border);padding:24px 32px;cursor:pointer;">
+        <summary style="font-size:14px;font-weight:500;color:var(--navy);letter-spacing:0.04em;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          料金はいつ確定しますか？
+          <span style="font-size:18px;color:var(--accent);flex-shrink:0;margin-left:16px;">＋</span>
+        </summary>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-light);">初回のお問い合わせ・概要確認は無料です。医療記録を確認したうえで弁護士・医師が見通しを検討する事前相談から有料となります。正式なお見積もりは資料確認後にご提示いたします。</p>
+      </details>
+
+      <details style="background:var(--white);border:1px solid var(--border);padding:24px 32px;cursor:pointer;">
+        <summary style="font-size:14px;font-weight:500;color:var(--navy);letter-spacing:0.04em;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          全国対応は可能ですか？
+          <span style="font-size:18px;color:var(--accent);flex-shrink:0;margin-left:16px;">＋</span>
+        </summary>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-light);">はい、全国対応しております。メール・電話・オンラインを活用しておりますので、ご来社いただく必要はございません。</p>
+      </details>
+
+      <details style="background:var(--white);border:1px solid var(--border);padding:24px 32px;cursor:pointer;">
+        <summary style="font-size:14px;font-weight:500;color:var(--navy);letter-spacing:0.04em;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          相談から意見書作成までどのくらいかかりますか？
+          <span style="font-size:18px;color:var(--accent);flex-shrink:0;margin-left:16px;">＋</span>
+        </summary>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-light);">案件の内容・医療記録の分量・専門医のスケジュールにより異なります。目安や納期については、お見積もり時にご案内いたします。</p>
+      </details>
+
+      <details style="background:var(--white);border:1px solid var(--border);padding:24px 32px;cursor:pointer;">
+        <summary style="font-size:14px;font-weight:500;color:var(--navy);letter-spacing:0.04em;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          医療記録や相談内容の取り扱いはどうなりますか？
+          <span style="font-size:18px;color:var(--accent);flex-shrink:0;margin-left:16px;">＋</span>
+        </summary>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-light);">お預かりする医療記録や相談内容は、個人情報・機微情報を含む重要な資料として適切に管理いたします。ご相談内容が外部に公開されることはありません。</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- COLUMN -->
+<section class="section service" id="column">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-en">Column</span>
+      <span class="section-ja">医療過誤訴訟コラム</span>
+      <p class="section-lead">医療過誤訴訟の基礎知識、医学的意見書の作成、協力医の探し方、判例解説など、実務に役立つ情報を順次公開予定です。</p>
       <div class="section-divider"></div>
     </div>
 
-    <!-- 弁護士カード 横並び -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+    <div class="fade-in" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:40px;">
 
-      <!-- 1人目 -->
-      <div class="interview-card fade-in" style="margin-bottom:0;">
-        <div class="interview-img">
-          <span class="interview-img-placeholder">LAWYER</span>
-        </div>
-        <div class="interview-content">
-          <div class="interview-tags">
-            <span class="tag">交通事故・労災</span>
-            <span class="tag">医療過誤</span>
-          </div>
-          <h3 class="interview-name">○○ ○○ 弁護士</h3>
-          <div class="interview-firm">○○法律事務所</div>
-          <div class="interview-bar">○○弁護士会所属</div>
-          <div style="font-size:11px;color:var(--gray);margin-bottom:8px;letter-spacing:0.08em;">対応サービス</div>
-          <div class="interview-services">
-            <span class="service-badge">協力医サービス</span>
-            <span class="service-badge">医療鑑定意見書作成</span>
-          </div>
-          <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;">医療訴訟の実務経験を活かし、弁護士と専門医の橋渡しを担います。案件の初期段階から丁寧にヒアリングし、最適な専門医をご紹介します。</p>
-        </div>
-      </div>
+      <!-- カード① -->
+      <a href="#" style="display:block;background:var(--off-white);border:1px solid var(--border);padding:32px 28px;text-decoration:none;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.10)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:12px;">BASICS</div>
+        <h4 style="font-family:'Noto Serif JP',serif;font-size:15px;font-weight:400;color:var(--navy);margin-bottom:12px;line-height:1.7;">医療過誤訴訟の<br>基礎知識</h4>
+        <p style="font-size:12px;color:var(--gray);line-height:1.8;">医療過誤訴訟の流れや争点の特徴、弁護士が押さえておくべき医学的な基礎を解説します。</p>
+        <div style="margin-top:16px;font-size:11px;color:var(--accent);letter-spacing:0.08em;">公開予定 →</div>
+      </a>
 
-      <!-- 2人目 -->
-      <div class="interview-card fade-in fade-in-delay-1" style="margin-bottom:0;">
-        <div class="interview-img">
-          <span class="interview-img-placeholder">LAWYER</span>
-        </div>
-        <div class="interview-content">
-          <div class="interview-tags">
-            <span class="tag">遺言能力鑑定</span>
-            <span class="tag">医療過誤</span>
-          </div>
-          <h3 class="interview-name">○○ ○○ 弁護士</h3>
-          <div class="interview-firm">○○法律事務所</div>
-          <div class="interview-bar">○○弁護士会所属</div>
-          <div style="font-size:11px;color:var(--gray);margin-bottom:8px;letter-spacing:0.08em;">対応サービス</div>
-          <div class="interview-services">
-            <span class="service-badge">協力医サービス</span>
-            <span class="service-badge">医療鑑定意見書作成</span>
-          </div>
-          <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-top:16px;">遺言能力や医療過誤に関する案件を中心に対応。医学的な専門知識と法的構成を組み合わせ、弁護士の立場に寄り添ったサポートを提供します。</p>
-        </div>
-      </div>
+      <!-- カード② -->
+      <a href="#" style="display:block;background:var(--off-white);border:1px solid var(--border);padding:32px 28px;text-decoration:none;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.10)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:12px;">OPINION</div>
+        <h4 style="font-family:'Noto Serif JP',serif;font-size:15px;font-weight:400;color:var(--navy);margin-bottom:12px;line-height:1.7;">医学的意見書とは<br>何か</h4>
+        <p style="font-size:12px;color:var(--gray);line-height:1.8;">鑑定意見書・報告書・スクリーニングの違いや、裁判で使える意見書の要件を解説します。</p>
+        <div style="margin-top:16px;font-size:11px;color:var(--accent);letter-spacing:0.08em;">公開予定 →</div>
+      </a>
+
+      <!-- カード③ -->
+      <a href="#" style="display:block;background:var(--off-white);border:1px solid var(--border);padding:32px 28px;text-decoration:none;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.10)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:12px;">DOCTOR</div>
+        <h4 style="font-family:'Noto Serif JP',serif;font-size:15px;font-weight:400;color:var(--navy);margin-bottom:12px;line-height:1.7;">協力医の探し方と<br>選び方</h4>
+        <p style="font-size:12px;color:var(--gray);line-height:1.8;">医療訴訟における協力医の役割と、案件に合った専門医を選定するポイントを解説します。</p>
+        <div style="margin-top:16px;font-size:11px;color:var(--accent);letter-spacing:0.08em;">公開予定 →</div>
+      </a>
+
+      <!-- カード④ -->
+      <a href="#" style="display:block;background:var(--off-white);border:1px solid var(--border);padding:32px 28px;text-decoration:none;transition:box-shadow 0.3s,transform 0.3s;" onmouseover="this.style.boxShadow='0 8px 40px rgba(13,31,60,0.10)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:12px;">CASES</div>
+        <h4 style="font-family:'Noto Serif JP',serif;font-size:15px;font-weight:400;color:var(--navy);margin-bottom:12px;line-height:1.7;">判例解説・<br>裁判例データベース</h4>
+        <p style="font-size:12px;color:var(--gray);line-height:1.8;">医療過誤に関する裁判例の要旨を整理し、実務に活かせる判例データベースを公開予定です。</p>
+        <div style="margin-top:16px;font-size:11px;color:var(--accent);letter-spacing:0.08em;">公開予定 →</div>
+      </a>
 
     </div>
 
+    <div class="service-more fade-in">
+      <a href="#" class="view-more">コラム一覧を見る →</a>
+    </div>
   </div>
 </section>
 
-<!-- NEWS -->
-<section class="section news" id="news">
+<section class="section reason" id="news">
   <div class="section-inner">
     <div class="section-header fade-in">
       <span class="section-en">News</span>
@@ -1406,29 +1493,138 @@ footer {
   </div>
 </section>
 
+<!-- PRICING -->
+<section class="contact" id="pricing">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-en">Pricing</span>
+      <span class="section-ja">料金のご案内</span>
+      <p class="section-lead">費用は、医療記録の分量、診療科、争点の複雑さ、必要な専門医の分野、相談回数、意見書の有無により変動します。初回お問い合わせ・概要確認後、必要資料を確認したうえで正式なお見積もりをご提示します。初回のお問い合わせは無料。医療記録をもとに弁護士・医師が見通しを検討する事前相談から有料となります。</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+
+      <!-- 協力医サービス料金 -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:36px 40px;">
+        <div style="font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:12px;">SERVICE 01</div>
+        <h4 style="font-family:'Noto Serif JP',serif;font-size:17px;font-weight:400;color:var(--white);margin-bottom:20px;letter-spacing:0.05em;">協力医サービス</h4>
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;">
+            <span style="font-size:13px;color:rgba(255,255,255,0.6);">事前相談費用</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--white);">○○万円<span style="font-size:14px;">から</span></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;">
+            <span style="font-size:13px;color:rgba(255,255,255,0.6);">継続サポート費用</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--white);">月額○○万円<span style="font-size:14px;">から</span></span>
+          </div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.8;border-left:2px solid rgba(200,169,110,0.4);padding-left:12px;">
+            ※ 医療記録の分量・案件内容を確認後にお見積もりいたします。<br>
+            ※ 上記は目安です。案件により異なる場合があります。
+          </div>
+        </div>
+      </div>
+
+      <!-- 医療鑑定意見書作成料金 -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:36px 40px;">
+        <div style="font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:12px;">SERVICE 02</div>
+        <h4 style="font-family:'Noto Serif JP',serif;font-size:17px;font-weight:400;color:var(--white);margin-bottom:20px;letter-spacing:0.05em;">医療鑑定意見書作成サービス</h4>
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;">
+            <span style="font-size:13px;color:rgba(255,255,255,0.6);">事前相談・スクリーニング</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--white);">3.3万円<span style="font-size:14px;">から</span></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;">
+            <span style="font-size:13px;color:rgba(255,255,255,0.6);">報告書作成</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--white);">7万円<span style="font-size:14px;">から</span></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;">
+            <span style="font-size:13px;color:rgba(255,255,255,0.6);">鑑定意見書作成</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--white);">26万円<span style="font-size:14px;">から</span></span>
+          </div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.8;border-left:2px solid rgba(200,169,110,0.4);padding-left:12px;">
+            ※ 医療記録の分量確認後にお見積もりいたします。<br>
+            ※ すべて税別表示です。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REASSURANCE -->
+<section class="section service" id="reassurance">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-en">Before You Contact</span>
+      <span class="section-ja">ご相談前の3つの安心</span>
+      <div class="section-divider"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;" class="fade-in">
+
+      <div style="background:var(--white);border:1px solid var(--border);padding:40px 36px;text-align:center;position:relative;overflow:hidden;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:var(--gray-light);line-height:1;position:absolute;top:-8px;right:16px;pointer-events:none;">01</div>
+        <div style="width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h4 style="font-family:'Noto Serif JP',serif;font-size:15px;font-weight:400;color:var(--navy);margin-bottom:12px;line-height:1.7;letter-spacing:0.04em;">医療記録が揃っていなくても<br>相談可能</h4>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;">まずは事案の概要から確認します。資料が揃っていない段階でもお気軽にご連絡ください。</p>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--border);padding:40px 36px;text-align:center;position:relative;overflow:hidden;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:var(--gray-light);line-height:1;position:absolute;top:-8px;right:16px;pointer-events:none;">02</div>
+        <div style="width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h4 style="font-family:'Noto Serif JP',serif;font-size:15px;font-weight:400;color:var(--navy);margin-bottom:12px;line-height:1.7;letter-spacing:0.04em;">初回お問い合わせ・<br>概要確認は無料</h4>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;">有料となる範囲は事前にご案内します。費用について不明な点があればお気軽にお尋ねください。</p>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--border);padding:40px 36px;text-align:center;position:relative;overflow:hidden;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:var(--gray-light);line-height:1;position:absolute;top:-8px;right:16px;pointer-events:none;">03</div>
+        <div style="width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4 style="font-family:'Noto Serif JP',serif;font-size:15px;font-weight:400;color:var(--navy);margin-bottom:12px;line-height:1.7;letter-spacing:0.04em;">個人情報・医療記録を<br>適切に管理</h4>
+        <p style="font-size:13px;color:var(--gray);line-height:1.9;">ご相談内容が外部に公開されることはありません。機微情報を含む資料として厳重に管理します。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
-<section class="contact" id="contact">
+<section class="section service" id="contact">
   <div class="section-inner">
     <div class="section-header fade-in">
       <span class="section-en">Contact</span>
       <span class="section-ja">お問い合わせ</span>
-      <p class="section-lead">ご相談・お見積りは無料です。お気軽にお問い合わせください。医療鑑定のエキスパートがサポートいたします。</p>
+      <p class="section-lead">初回のお問い合わせ・概要確認は無料です。まずはお気軽にご連絡ください。</p>
       <div class="section-divider"></div>
     </div>
-    <div class="contact-grid">
-      <div class="contact-block fade-in">
-        <h3 class="contact-block-title">無料お問い合わせ</h3>
-        <p class="contact-block-desc">弁護士様以外のご依頼は承っておりません。予めご了承ください。</p>
-        <a href="#" class="contact-btn">お問い合わせフォーム</a>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;" class="fade-in">
+
+      <!-- 左：フォームCTA -->
+      <div style="background:var(--navy);padding:48px 44px;">
+        <div style="font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:16px;">CONTACT</div>
+        <h3 style="font-family:'Noto Serif JP',serif;font-size:20px;font-weight:400;color:var(--white);margin-bottom:12px;line-height:1.7;letter-spacing:0.05em;">初回お問い合わせ<br>（無料）</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:32px;line-height:1.9;">内容を確認の上、担当よりご連絡いたします。まずはお気軽にご連絡ください。</p>
+        <a href="#" style="display:block;padding:16px 28px;background:var(--accent);color:var(--navy);text-align:center;text-decoration:none;font-size:14px;font-weight:500;letter-spacing:0.1em;transition:background 0.2s;margin-bottom:16px;">お問い合わせフォーム</a>
       </div>
-      <div class="contact-block fade-in fade-in-delay-1">
-        <h3 class="contact-block-title">無料資料ダウンロード</h3>
-        <p class="contact-block-desc">詳しいご説明資料（弁護士の先生向け）や鑑定意見書等のサンプル、依頼者様向けのチラシをご提供しております。</p>
-        <a href="#" class="contact-btn-outline">資料一覧を見る</a>
-        <div class="contact-note">
-          弁護士向けサービスとなっておりますので、お問い合わせは弁護士のみの受付とさせていただいております。
+
+      <!-- 右：補足情報 -->
+      <div style="background:var(--white);border:1px solid var(--border);padding:48px 44px;display:flex;flex-direction:column;gap:16px;">
+        <div>
+          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:10px;">無料・有料の範囲について</div>
+          <p style="font-size:13px;color:var(--text-mid);line-height:1.9;">初回お問い合わせ・概要確認は<strong style="color:var(--navy);">無料</strong>です。<br>医療記録を確認したうえで弁護士・医師が見通しを検討する事前相談、報告書作成、鑑定意見書作成は<strong style="color:var(--navy);">有料</strong>となります。</p>
+        </div>
+        <div style="border-top:1px solid var(--gray-light);padding-top:16px;">
+          <div style="font-size:11px;letter-spacing:0.15em;color:var(--accent);margin-bottom:10px;">個人情報・医療記録の取り扱い</div>
+          <p style="font-size:13px;color:var(--text-mid);line-height:1.9;">お預かりする医療記録や相談内容は、個人情報・機微情報を含む重要な資料として適切に管理いたします。ご相談内容が外部に公開されることはありません。</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1450,18 +1646,19 @@ footer {
         <div class="footer-nav-title">MENU</div>
         <div class="footer-nav-links">
           <a href="#">ホーム</a>
-          <a href="#">協力医とは</a>
-          <a href="#">サービス</a>
-          <a href="#">対応できる案件</a>
+          <a href="#for-lawyers">協力医とは</a>
+          <a href="#service">サービス</a>
+          <a href="#case">対応できる案件</a>
+          <a href="#column">コラム</a>
         </div>
       </div>
       <div class="footer-nav-group">
         <div class="footer-nav-title">SUPPORT</div>
         <div class="footer-nav-links">
-          <a href="#">お客様の声</a>
-          <a href="#">窓口弁護士のご紹介</a>
-          <a href="#">よくあるご質問</a>
-          <a href="#">お知らせ</a>
+          <a href="#service">事前相談について</a>
+          <a href="#pricing">料金について</a>
+          <a href="#faq">よくあるご質問</a>
+          <a href="#news">お知らせ</a>
         </div>
       </div>
       <div class="footer-nav-group">
@@ -1469,8 +1666,7 @@ footer {
         <div class="footer-nav-links">
           <a href="#">会社概要</a>
           <a href="#">プライバシーポリシー</a>
-          <a href="#">お問い合わせ</a>
-          <a href="#">資料ダウンロード</a>
+          <a href="#contact">お問い合わせ</a>
         </div>
       </div>
     </div>
@@ -1478,8 +1674,7 @@ footer {
   <div class="footer-bottom">
     <span class="footer-copy">©2025 協力医のタスケル, All Rights Reserved.</span>
     <div class="footer-links">
-      <a href="#">お問い合わせ</a>
-      <a href="#">資料ダウンロード</a>
+      <a href="#contact">お問い合わせ</a>
     </div>
   </div>
 </footer>
@@ -1499,6 +1694,14 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// FAQ アコーディオン ＋／－ 切り替え
+document.querySelectorAll('#faq details').forEach(detail => {
+  detail.addEventListener('toggle', () => {
+    const icon = detail.querySelector('summary span:last-child');
+    if (icon) icon.textContent = detail.open ? '－' : '＋';
+  });
+});
 </script>
 </body>
 </html>
